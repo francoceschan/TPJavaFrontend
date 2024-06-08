@@ -1,6 +1,6 @@
 export class Colectivo {
     
-    idColectivo: number;
+    patente: string;
     capacidad: number;
 
 }

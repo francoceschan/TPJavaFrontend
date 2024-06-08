@@ -3,8 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CustomComponentsModule } from '../modules/custom-components.module';
-import { MaterialModule } from 'src/modules/material.module';
+import { CustomComponentsModule } from './modules/custom-components.module';
+import { MaterialModule } from 'src/app/modules/material.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,10 +15,13 @@ import { MaterialModule } from 'src/modules/material.module';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomComponentsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

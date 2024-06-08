@@ -1,0 +1,28 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-header class="header">
+            <mat-card-title>Agregar colectivo</mat-card-title>
+        </mat-card-header>
+        <div class="card-body">
+            <mat-form-field appearance="outline">
+                <mat-label>Patente</mat-label>
+                <input 
+                matInput 
+                placeholder="Ingresar patente"
+                [(ngModel)]="colectivo.patente">
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" >
+                <mat-label>Capacidad</mat-label>
+                <input 
+                matInput 
+                type="number"
+                placeholder="Ingresar capacidad" 
+                [(ngModel)]="colectivo.capacidad">
+            </mat-form-field>
+        </div>
+        <mat-card-actions align="end">
+            <button mat-button (click)="guardar()">Guardar</button>
+          </mat-card-actions>
+    </mat-card>
+</div>

@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:'gestionar-viajes/crear-modificar-colectivo', 
+    path:'gestionar-colectivos/crear-modificar-colectivo', 
     component:CrearModificarColectivosComponent,
     canActivate: [AuthGuard]
   },

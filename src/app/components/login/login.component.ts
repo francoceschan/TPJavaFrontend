@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit{
 
   logout(){
     this._authService.logout();
+    this.router.navigate(['/home']);
   }
 
 }

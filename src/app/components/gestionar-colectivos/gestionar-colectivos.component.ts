@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Colectivo } from 'src/app/model/Colectivo';
+import { ColectivoService } from 'src/app/services/colectivo.service';
 
 @Component({
   selector: 'app-gestionar-colectivos',
@@ -9,18 +11,44 @@ import { Colectivo } from 'src/app/model/Colectivo';
 })
 export class GestionarColectivosComponent {
   constructor(
-    private router: Router
+    private router: Router,
+    private _colectivoService: ColectivoService,
+    private snackBar: MatSnackBar
   ) {}
 
   colectivos:Colectivo[] = [];
   displayedColumns: string[] = ['patente','capacidad', 'editar', 'borrar'];
 
   ngOnInit(): void {
-
+    this.buscarColectivos();
   }
 
   crearColectivo(){
-    this.router.navigate(['/gestionar-viajes/crear-modificar-colectivo'])
+    this.router.navigate(['/gestionar-colectivos/crear-modificar-colectivo'])
+  }
+
+  eliminarColectivo(patente: string) {
+    this._colectivoService.deleteById(patente).subscribe({
+      next: (res) => {
+        this.snackBar.open('Colectivo eliminado con éxito', 'Cerrar', {
+          duration: 3000,
+        });
+        this.buscarColectivos();
+      },
+      error: (err) => {
+        this.snackBar.open('Error al eliminar el colectivo. Intente nuevamente.', 'Cerrar', {
+          duration: 3000,
+        });
+      }
+    });
+  }
+
+  buscarColectivos(){
+    this._colectivoService.getAll().subscribe(res => this.colectivos = res)
+  }
+
+  editarColectivo(element: Colectivo) {
+    this.router.navigate(['/gestionar-colectivos/crear-modificar-colectivo'], { state: { data: element } });
   }
 
 

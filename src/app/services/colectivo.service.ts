@@ -17,4 +17,8 @@ export class ColectivoService {
   guardarColectivo(colectivo: Colectivo){
     return this.httpClient.post(`${environment.serverUrl}/colectivo`, colectivo, { headers: this.reqHeaders })
   }
+
+  getPermiso(){
+    return this.httpClient.get<string>(`${environment.serverUrl}/colectivo/getPermiso`);
+  }
 }

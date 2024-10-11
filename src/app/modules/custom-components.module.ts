@@ -10,6 +10,7 @@ import { GestionarViajesComponent } from 'src/app/components/gestionar-viajes/ge
 import { CrearModificarViajesComponent } from 'src/app/components/crear-modificar-viajes/crear-modificar-viajes.component';
 import { CrearModificarColectivosComponent } from 'src/app/components/crear-modificar-colectivos/crear-modificar-colectivos.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from '../components/login/login.component';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HomeComponent,
     NavBarComponent,
+    LoginComponent,
     FooterComponent,
     CardViajeComponent,
     GestionarColectivosComponent,
@@ -33,6 +35,7 @@ import { FormsModule } from '@angular/forms';
   exports: [
     HomeComponent,
     NavBarComponent,
+    LoginComponent,
     FooterComponent,
     CardViajeComponent,
     GestionarColectivosComponent,

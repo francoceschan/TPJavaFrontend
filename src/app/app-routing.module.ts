@@ -5,15 +5,41 @@ import { GestionarViajesComponent } from 'src/app/components/gestionar-viajes/ge
 import { GestionarColectivosComponent } from 'src/app/components/gestionar-colectivos/gestionar-colectivos.component';
 import { CrearModificarViajesComponent } from 'src/app/components/crear-modificar-viajes/crear-modificar-viajes.component';
 import { CrearModificarColectivosComponent } from './components/crear-modificar-colectivos/crear-modificar-colectivos.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  {path:'gestionar-viajes', component:GestionarViajesComponent},
-  {path:'gestionar-viajes/crear-modificar-viaje', component:CrearModificarViajesComponent},
-  {path:'gestionar-viajes/crear-modificar-viaje/:id', component:CrearModificarViajesComponent},
-  {path:'gestionar-viajes/crear-modificar-colectivo', component:CrearModificarColectivosComponent},
-  {path:'gestionar-viajes/crear-modificar-colectivo/:id', component:CrearModificarColectivosComponent},
-  {path:'gestionar-colectivos', component:GestionarColectivosComponent},
+  {
+    path:'gestionar-viajes', 
+    component:GestionarViajesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-viajes/crear-modificar-viaje', 
+    component:CrearModificarViajesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-viajes/crear-modificar-viaje/:id', 
+    component:CrearModificarViajesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-viajes/crear-modificar-colectivo', 
+    component:CrearModificarColectivosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-viajes/crear-modificar-colectivo/:id', component:CrearModificarColectivosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-colectivos', 
+    component:GestionarColectivosComponent,
+    canActivate: [AuthGuard]
+  },
   {path:'home', component:HomeComponent},
+  {path:'login', component:LoginComponent},
   {path:'', component:HomeComponent},
   ]
 

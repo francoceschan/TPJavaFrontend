@@ -24,7 +24,7 @@ export class CrearModificarColectivosComponent {
 
     const state = this.router.lastSuccessfulNavigation?.extras?.state;
     if (state && state['data']) {
-      this.colectivo = state['data']; // Aquí obtienes directamente el objeto 'colectivo'
+      this.colectivo = state['data'];
     } else {
       this.colectivo = new Colectivo();
       //console.error('No se recibió el objeto colectivo');
@@ -46,6 +46,5 @@ export class CrearModificarColectivosComponent {
         });
       }
     });
-  
   }
 }

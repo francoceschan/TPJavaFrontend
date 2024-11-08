@@ -17,7 +17,7 @@ export class AuthGuard {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this._authService.usuarioAutenticado()) {
+    if (this._authService.usuarioAutenticado().getValue()) {
       if (this.verificaRol(route.data)) {
         return true
       }

@@ -1,18 +1,78 @@
 <div class="container">
     <mat-card class="card">
-        <mat-card-header class="header">
-            <mat-card-title>Crear viaje</mat-card-title>
-        </mat-card-header>
-        <div class="card-body">
-            <mat-form-field appearance="outline">
-                <mat-label>Nombre del viaje</mat-label>
-                <input matInput placeholder="Nombre del viaje">
-            </mat-form-field>
-    
-            <mat-form-field appearance="outline">
-                <mat-label>Descripción del viaje</mat-label>
-                <textarea matInput placeholder="Descripción del viaje"></textarea>
-            </mat-form-field>
-        </div>
+      <mat-card-header class="header">
+        <mat-card-title>Crear viaje</mat-card-title>
+      </mat-card-header>
+      <div class="card-body">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre del viaje</mat-label>
+          <input 
+          matInput
+          [(ngModel)]="viaje.nombre" 
+          placeholder="Nombre del viaje">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="colectivos?.length != 0">
+          <mat-label>Colectivos</mat-label>
+          <input matInput
+                 aria-label="State"
+                 [matAutocomplete]="auto"
+                 [formControl]="colectivoCtrl">
+          <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let colectivo of filteredColectivos | async" [value]="colectivo.patente">
+                <span>Patente: {{colectivo.patente}}</span> | 
+                <small>Capacidad: {{colectivo.capacidad}}</small>
+              </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="capacidadSeleccionada != (null || undefined)">
+          <mat-label>Capacidad</mat-label>
+          <input 
+            matInput 
+            [value]="capacidadSeleccionada"
+            placeholder="Capacidad del colectivo" 
+            [disabled]="true">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Precio</mat-label>
+          <input 
+            matInput
+            [(ngModel)]="viaje.precio"
+            placeholder="Precio del viaje"
+            type="number">
+          <span matTextPrefix>$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha y hora</mat-label>
+          <input 
+            matInput 
+            [(ngModel)]="viaje.fechaHora"
+            placeholder="Fecha y hora"
+            type="datetime-local">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Descripción del viaje</mat-label>
+          <textarea 
+          matInput
+          [(ngModel)]="viaje.descripcion"
+          placeholder="Descripción del viaje"></textarea>
+        </mat-form-field>
+
+          <input
+            type="file"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            placeholder="Seleccione una imagen"
+          />
+      </div>
+      <mat-card-actions align="end">
+        <button mat-button (click)="guardar()">Guardar</button>
+      </mat-card-actions>
     </mat-card>
-</div>
+  </div>
+  

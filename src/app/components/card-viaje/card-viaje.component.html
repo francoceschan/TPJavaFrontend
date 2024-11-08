@@ -2,7 +2,7 @@
     <mat-card-header>
       <mat-card-title>{{viaje.nombre}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img *ngIf="viaje.imagen" [src]="'data:image/jpeg;base64,' + viaje.imagen" alt="Imagen del Viaje">
     <mat-card-content>
       <p>
         {{viaje.descripcion}}

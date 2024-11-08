@@ -30,7 +30,8 @@
             <ng-container matColumnDef="editar">
                 <th mat-header-cell *matHeaderCellDef> Editar </th>
                 <td mat-cell *matCellDef="let element"> 
-                    <button mat-icon-button>
+                    <button mat-icon-button
+                    (click)="editarViaje(element)">
                         <mat-icon>edit</mat-icon>
                     </button> 
                 </td>
@@ -39,7 +40,8 @@
             <ng-container matColumnDef="borrar">
                 <th mat-header-cell *matHeaderCellDef> Borrar </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button>
+                    <button mat-icon-button
+                    (click)="eliminarViaje(element.idViaje)">
                         <mat-icon>delete</mat-icon>
                     </button> 
                 </td>
@@ -51,7 +53,6 @@
         </table>
 
     </mat-card>
-
     
 </div>
 

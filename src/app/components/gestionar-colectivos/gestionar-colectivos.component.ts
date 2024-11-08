@@ -36,7 +36,7 @@ export class GestionarColectivosComponent {
         this.buscarColectivos();
       },
       error: (err) => {
-        this.snackBar.open('Error al eliminar el colectivo. Intente nuevamente.', 'Cerrar', {
+        this.snackBar.open(err.error.message, 'Cerrar', {
           duration: 3000,
         });
       }

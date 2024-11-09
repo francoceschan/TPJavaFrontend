@@ -3,8 +3,10 @@ import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
+import { Ciudad } from 'src/app/model/Ciudad';
 import { Colectivo } from 'src/app/model/Colectivo';
 import { Viaje } from 'src/app/model/Viaje';
+import { CiudadService } from 'src/app/services/ciudad.service';
 import { ColectivoService } from 'src/app/services/colectivo.service';
 import { ViajeService } from 'src/app/services/viaje.service';
 
@@ -17,8 +19,13 @@ export class CrearModificarViajesComponent implements OnInit {
 
   viaje: Viaje;
   colectivos: Colectivo[] = [];
-  colectivoCtrl = new FormControl('');
+  colectivoCtrl = new FormControl();
   filteredColectivos: Observable<Colectivo[]>;
+  ciudades: Ciudad[] = [];
+  ciudadOrigenCtrl = new FormControl('');
+  filteredCiudadesOrigen: Observable<Ciudad[]>;
+  ciudadDestinoCtrl = new FormControl('');
+  filteredCiudadesDestino: Observable<Ciudad[]>;
 
   capacidadSeleccionada: number | null;
 
@@ -26,11 +33,9 @@ export class CrearModificarViajesComponent implements OnInit {
     private router: Router,
     private _colectivoService: ColectivoService,
     private _viajeService: ViajeService,
+    private _ciudadService: CiudadService,
     private snackBar: MatSnackBar,
     ) {
-      if(this.colectivos?.length != 0){
-          
-      }
       this.filteredColectivos = this.colectivoCtrl.valueChanges.pipe(
         startWith(''),
         map(state => (state ? this._filterColectivos(state) : this.colectivos.slice())),
@@ -42,13 +47,39 @@ export class CrearModificarViajesComponent implements OnInit {
           this.viaje.colectivo = seleccionado;
           this.capacidadSeleccionada = seleccionado ? seleccionado.capacidad : null;
         }
+      });
 
+      this.filteredCiudadesOrigen = this.ciudadOrigenCtrl.valueChanges.pipe(
+        startWith(''),
+        map(state => (state ? this._filterCiudades(state) : this.ciudades.slice())),
+      );
+
+      this.ciudadOrigenCtrl.valueChanges.subscribe(value => {
+        const seleccionada = this.ciudades.find(ciudad => ciudad.nombre === value);
+        if(seleccionada){
+          this.viaje.ciudadOrigen = seleccionada;
+        }
+      });
+
+      this.filteredCiudadesDestino = this.ciudadDestinoCtrl.valueChanges.pipe(
+        startWith(''),
+        map(state => (state ? this._filterCiudades(state) : this.ciudades.slice())),
+      );
+
+      this.ciudadDestinoCtrl.valueChanges.subscribe(value => {
+        const seleccionada = this.ciudades.find(ciudad => ciudad.nombre === value);
+        if(seleccionada){
+          this.viaje.ciudadDestino = seleccionada;
+        }
       });
     }
 
 
   ngOnInit(): void {
     this._colectivoService.getAll().subscribe(colectivos => {this.colectivos = colectivos})
+    this._ciudadService.getAll().subscribe(ciudades => {this.ciudades = ciudades
+      console.log(ciudades)
+    })
 
     const state = this.router.lastSuccessfulNavigation?.extras?.state;
     if (state && state['data']) {
@@ -64,6 +95,12 @@ export class CrearModificarViajesComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.colectivos.filter(colectivo => colectivo.patente.toLowerCase().includes(filterValue));
+  }
+
+  private _filterCiudades(value: string): Ciudad[] {
+    const filterValue = value;
+
+    return this.ciudades.filter(ciudad => ciudad.nombre.toLowerCase().includes(filterValue));
   }
 
   guardar() {

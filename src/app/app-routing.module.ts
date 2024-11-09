@@ -7,6 +7,8 @@ import { CrearModificarViajesComponent } from 'src/app/components/crear-modifica
 import { CrearModificarColectivosComponent } from './components/crear-modificar-colectivos/crear-modificar-colectivos.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
+import { CrearModificarCiudadesComponent } from './components/crear-modificar-ciudades/crear-modificar-ciudades.component';
+import { GestionarCiudadesComponent } from './components/gestionar-ciudades/gestionar-ciudades.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,20 @@ const routes: Routes = [
   {
     path:'gestionar-colectivos', 
     component:GestionarColectivosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-ciudades/crear-modificar-ciudad', 
+    component:CrearModificarCiudadesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-ciudades/crear-modificar-ciudad/:id', component:CrearModificarCiudadesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'gestionar-ciudades', 
+    component:GestionarCiudadesComponent,
     canActivate: [AuthGuard]
   },
   {path:'home', component:HomeComponent},

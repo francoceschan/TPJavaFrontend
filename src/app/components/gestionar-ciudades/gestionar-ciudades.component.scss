@@ -1,0 +1,15 @@
+.container {
+    padding: 64px;
+}
+
+.card {
+    padding: 8px;
+}
+
+.header {
+    margin-bottom: 8px;
+}
+
+:host ::ng-deep .mat-mdc-table {
+    box-shadow: none;
+}

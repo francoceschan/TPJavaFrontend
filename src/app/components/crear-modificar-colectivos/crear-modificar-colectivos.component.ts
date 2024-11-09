@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Colectivo } from 'src/app/model/Colectivo';
 import { ColectivoService } from '../../services/colectivo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -27,7 +27,6 @@ export class CrearModificarColectivosComponent {
       this.colectivo = state['data'];
     } else {
       this.colectivo = new Colectivo();
-      //console.error('No se recibió el objeto colectivo');
     }
   
   }

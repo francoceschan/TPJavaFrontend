@@ -30,6 +30,10 @@ export class NavBarComponent implements OnInit {
       this.router.navigate(['/gestionar-colectivos'])
   }
 
+  gestionarCiudades(){
+    this.router.navigate(['/gestionar-ciudades'])
+}
+
   login(){
     this.router.navigate(['/login'])
   }

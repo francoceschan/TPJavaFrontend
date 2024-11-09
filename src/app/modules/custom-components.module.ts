@@ -11,6 +11,8 @@ import { CrearModificarViajesComponent } from 'src/app/components/crear-modifica
 import { CrearModificarColectivosComponent } from 'src/app/components/crear-modificar-colectivos/crear-modificar-colectivos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from '../components/login/login.component';
+import { CrearModificarCiudadesComponent } from '../components/crear-modificar-ciudades/crear-modificar-ciudades.component';
+import { GestionarCiudadesComponent } from '../components/gestionar-ciudades/gestionar-ciudades.component';
 
 
 
@@ -24,9 +26,10 @@ import { LoginComponent } from '../components/login/login.component';
     CardViajeComponent,
     GestionarColectivosComponent,
     GestionarViajesComponent,
+    GestionarCiudadesComponent,
     CrearModificarViajesComponent,
     CrearModificarColectivosComponent,
-
+    CrearModificarCiudadesComponent
   ],
   imports: [
     CommonModule,
@@ -42,8 +45,10 @@ import { LoginComponent } from '../components/login/login.component';
     CardViajeComponent,
     GestionarColectivosComponent,
     GestionarViajesComponent,
+    GestionarCiudadesComponent,
     CrearModificarViajesComponent,
-    CrearModificarColectivosComponent
+    CrearModificarColectivosComponent,
+    CrearModificarCiudadesComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

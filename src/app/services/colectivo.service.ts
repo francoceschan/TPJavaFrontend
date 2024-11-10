@@ -23,6 +23,10 @@ export class ColectivoService {
     return this.httpClient.get<Colectivo[]>(`${environment.serverUrl}/colectivo/getAll`, { headers: this.reqHeaders })
   }
 
+  getColectivosDisponibles(fechaInicio: Date, fechaFin: Date):Observable<Colectivo[]>{
+    return this.httpClient.get<Colectivo[]>(`${environment.serverUrl}/colectivo/getColectivosDisponibles/${fechaInicio}/${fechaFin}`, { headers: this.reqHeaders })
+  }
+
   deleteById(patente: string): Observable<void> {
     return this.httpClient.delete<void>(`${environment.serverUrl}/colectivo/deleteById/${patente}`, { headers: this.reqHeaders })
   }

@@ -12,7 +12,27 @@
           placeholder="Nombre del viaje">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha y hora inicio</mat-label>
+          <input 
+            matInput
+            [formControl]="fechaInicioCtrl" 
+            [(ngModel)]="viaje.fechaHoraInicio"
+            placeholder="Fecha y hora inicio"
+            type="datetime-local">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha y hora fin</mat-label>
+          <input 
+            matInput 
+            [formControl]="fechaFinCtrl" 
+            [(ngModel)]="viaje.fechaHoraFin"
+            placeholder="Fecha y hora fin"
+            type="datetime-local">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="ciudades.length != 0">
           <mat-label>Ciudad de origen</mat-label>
           <input matInput
                  aria-label="State"
@@ -25,7 +45,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="ciudades.length != 0">
           <mat-label>Ciudad de destino</mat-label>
           <input matInput
                  aria-label="State"
@@ -38,7 +58,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="colectivos.length != 0">
           <mat-label>Colectivos</mat-label>
           <input matInput
                  aria-label="State"
@@ -70,25 +90,6 @@
             type="number">
           <span matTextPrefix>$&nbsp;</span>
         </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Fecha y hora inicio</mat-label>
-          <input 
-            matInput 
-            [(ngModel)]="viaje.fechaHoraInicio"
-            placeholder="Fecha y hora inicio"
-            type="datetime-local">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Fecha y hora fin</mat-label>
-          <input 
-            matInput 
-            [(ngModel)]="viaje.fechaHoraFin"
-            placeholder="Fecha y hora fin"
-            type="datetime-local">
-        </mat-form-field>
-
 
         <mat-form-field appearance="outline">
           <mat-label>Descripción del viaje</mat-label>

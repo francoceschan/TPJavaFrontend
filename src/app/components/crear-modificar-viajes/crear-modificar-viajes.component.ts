@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable, startWith } from 'rxjs';
+import { combineLatest, map, Observable, startWith } from 'rxjs';
 import { Ciudad } from 'src/app/model/Ciudad';
 import { Colectivo } from 'src/app/model/Colectivo';
 import { Viaje } from 'src/app/model/Viaje';
@@ -27,6 +27,9 @@ export class CrearModificarViajesComponent implements OnInit {
   ciudadDestinoCtrl = new FormControl('');
   filteredCiudadesDestino: Observable<Ciudad[]>;
 
+  fechaInicioCtrl = new FormControl();
+  fechaFinCtrl = new FormControl();
+
   capacidadSeleccionada: number | null;
 
   constructor(
@@ -36,6 +39,20 @@ export class CrearModificarViajesComponent implements OnInit {
     private _ciudadService: CiudadService,
     private snackBar: MatSnackBar,
     ) {
+
+      combineLatest([
+        this.fechaInicioCtrl.valueChanges,
+        this.fechaFinCtrl.valueChanges
+      ]).subscribe(([fechaInicio, fechaFin]) => {
+          if (fechaInicio && fechaFin) {
+              this._colectivoService.getColectivosDisponibles(fechaInicio, fechaFin).subscribe(
+                  response => {
+                      this.colectivos = response;
+                  }
+              );
+          }
+      });
+
       this.filteredColectivos = this.colectivoCtrl.valueChanges.pipe(
         startWith(''),
         map(state => {
@@ -71,9 +88,7 @@ export class CrearModificarViajesComponent implements OnInit {
       );
     }
 
-
   ngOnInit(): void {
-    this._colectivoService.getAll().subscribe(colectivos => {this.colectivos = colectivos})
     this._ciudadService.getAll().subscribe(ciudades => {this.ciudades = ciudades
     })
 

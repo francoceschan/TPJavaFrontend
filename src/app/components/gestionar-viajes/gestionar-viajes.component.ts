@@ -18,7 +18,7 @@ export class GestionarViajesComponent {
   ) {}
 
   viajes:Viaje[];
-  displayedColumns: string[] = ['nombre','fechaHora', 'editar', 'borrar'];
+  displayedColumns: string[] = ['nombre','fechaHoraInicio', 'editar', 'borrar'];
 
   ngOnInit(): void {
     this.buscarViajes();

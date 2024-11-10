@@ -25,7 +25,8 @@ guardarViaje(viaje: Viaje): Observable<any> {
     nombre: viaje.nombre,
     descripcion: viaje.descripcion,
     precio: viaje.precio,
-    fechaHora: viaje.fechaHora,
+    fechaHoraInicio: viaje.fechaHoraInicio,
+    fechaHoraFin: viaje.fechaHoraFin,
     colectivo: viaje.colectivo,
     ciudadOrigen: viaje.ciudadOrigen,
     ciudadDestino: viaje.ciudadDestino

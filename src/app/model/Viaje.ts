@@ -9,7 +9,8 @@ export class Viaje {
     ciudadOrigen: Ciudad;
     ciudadDestino: Ciudad;
     precio: number;
-    fechaHora: Date;
+    fechaHoraInicio: Date;
+    fechaHoraFin: Date;
     colectivo: Colectivo;
     imagen: File | null;
     //imagenBase64: string;

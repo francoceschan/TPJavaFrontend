@@ -82,6 +82,8 @@ export class CrearModificarViajesComponent implements OnInit {
       this.viaje = state['data'];
       this.colectivoCtrl.setValue(this.viaje.colectivo.patente);
       this.capacidadSeleccionada = this.viaje.colectivo.capacidad;
+      this.ciudadOrigenCtrl.setValue(this.viaje.ciudadOrigen.nombre);
+      this.ciudadDestinoCtrl.setValue(this.viaje.ciudadDestino.nombre);
     } else {
       this.viaje = new Viaje()
     }

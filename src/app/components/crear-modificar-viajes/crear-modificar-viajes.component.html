@@ -72,11 +72,20 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Fecha y hora</mat-label>
+          <mat-label>Fecha y hora inicio</mat-label>
           <input 
             matInput 
-            [(ngModel)]="viaje.fechaHora"
-            placeholder="Fecha y hora"
+            [(ngModel)]="viaje.fechaHoraInicio"
+            placeholder="Fecha y hora inicio"
+            type="datetime-local">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha y hora fin</mat-label>
+          <input 
+            matInput 
+            [(ngModel)]="viaje.fechaHoraFin"
+            placeholder="Fecha y hora fin"
             type="datetime-local">
         </mat-form-field>
 

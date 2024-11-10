@@ -1,15 +1,27 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="icon-button with menu icon">
+    <button 
+    *ngIf="usuarioAutenticado"
+    mat-icon-button 
+    [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="gestionarViajes()" >Gestionar viajes</button>
-      <button mat-menu-item (click)="gestionarColectivos()" >Gestionar colectivos</button>
-      <button mat-menu-item (click)="gestionarCiudades()" >Gestionar ciudades</button>
+      <button 
+      mat-menu-item 
+      (click)="gestionarViajes()"
+      *ngIf="mostrarItem('ROLE_ADMINISTRATIVO')" >Gestionar viajes</button>
+      <button 
+      mat-menu-item 
+      (click)="gestionarColectivos()"
+      *ngIf="mostrarItem('ROLE_ADMINISTRATIVO')" >Gestionar colectivos</button>
+      <button 
+      mat-menu-item 
+      (click)="gestionarCiudades()" 
+      *ngIf="mostrarItem('ROLE_ADMINISTRATIVO')" >Gestionar ciudades</button>
     </mat-menu>
     <span>Viajes</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="loginMenu" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button mat-icon-button [matMenuTriggerFor]="loginMenu">
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #loginMenu="matMenu">

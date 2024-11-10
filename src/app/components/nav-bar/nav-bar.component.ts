@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Rol } from 'src/app/model/Enum/rol';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavBarComponent implements OnInit {
 
   usuarioAutenticado: boolean = false;
+  roles: Rol[] = [];
 
   constructor(
     private router : Router,
@@ -19,7 +21,14 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this._authService.usuarioAutenticado().subscribe(autenticado =>{
       this.usuarioAutenticado = autenticado
-  })
+    })
+
+    this.roles = this._authService.getRolesUsuario();
+
+  }
+
+  mostrarItem(rol: string){
+    return this.roles.toString().includes(rol);
   }
 
   gestionarViajes(){

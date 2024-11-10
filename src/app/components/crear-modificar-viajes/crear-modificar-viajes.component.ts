@@ -38,47 +38,43 @@ export class CrearModificarViajesComponent implements OnInit {
     ) {
       this.filteredColectivos = this.colectivoCtrl.valueChanges.pipe(
         startWith(''),
-        map(state => (state ? this._filterColectivos(state) : this.colectivos.slice())),
+        map(state => {
+          const seleccionado = this.colectivos.find(colectivo => colectivo.patente === state);
+          if (seleccionado) {
+            this.viaje.colectivo = seleccionado;
+            this.capacidadSeleccionada = seleccionado.capacidad;
+          }
+          return state ? this._filterColectivos(state) : this.colectivos.slice();
+        })
       );
-
-      this.colectivoCtrl.valueChanges.subscribe(value => {
-        const seleccionado = this.colectivos.find(colectivo => colectivo.patente === value);
-        if(seleccionado){
-          this.viaje.colectivo = seleccionado;
-          this.capacidadSeleccionada = seleccionado ? seleccionado.capacidad : null;
-        }
-      });
 
       this.filteredCiudadesOrigen = this.ciudadOrigenCtrl.valueChanges.pipe(
         startWith(''),
-        map(state => (state ? this._filterCiudades(state) : this.ciudades.slice())),
+        map(state => {
+          const seleccionada = this.ciudades.find(ciudad => ciudad.nombre === state);
+          if (seleccionada) {
+            this.viaje.ciudadOrigen = seleccionada;
+          }
+          return state ? this._filterCiudades(state) : this.ciudades.slice();
+        })
       );
-
-      this.ciudadOrigenCtrl.valueChanges.subscribe(value => {
-        const seleccionada = this.ciudades.find(ciudad => ciudad.nombre === value);
-        if(seleccionada){
-          this.viaje.ciudadOrigen = seleccionada;
-        }
-      });
 
       this.filteredCiudadesDestino = this.ciudadDestinoCtrl.valueChanges.pipe(
         startWith(''),
-        map(state => (state ? this._filterCiudades(state) : this.ciudades.slice())),
+        map(state => {
+          const seleccionada = this.ciudades.find(ciudad => ciudad.nombre === state);
+          if (seleccionada) {
+            this.viaje.ciudadDestino = seleccionada;
+          }
+          return state ? this._filterCiudades(state) : this.ciudades.slice();
+        })
       );
-
-      this.ciudadDestinoCtrl.valueChanges.subscribe(value => {
-        const seleccionada = this.ciudades.find(ciudad => ciudad.nombre === value);
-        if(seleccionada){
-          this.viaje.ciudadDestino = seleccionada;
-        }
-      });
     }
 
 
   ngOnInit(): void {
     this._colectivoService.getAll().subscribe(colectivos => {this.colectivos = colectivos})
     this._ciudadService.getAll().subscribe(ciudades => {this.ciudades = ciudades
-      console.log(ciudades)
     })
 
     const state = this.router.lastSuccessfulNavigation?.extras?.state;

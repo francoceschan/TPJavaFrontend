@@ -16,13 +16,17 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.buscarViajes()
+    this.buscarViajesDisponibles()
   }
 
-  buscarViajes(){
+  buscarViajesDisponibles(){
     this._viajeService.getViajesDisponibles().subscribe(res => 
       {
         this.viajes = res
       })
+  }
+
+  buscarViajesPorFiltros(viajes: Viaje[]){
+    this.viajes = viajes;
   }
 }

@@ -1,5 +1,11 @@
 #viajes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%;
+}
+
+.buscador {
+    margin-top: 16px;
 }

@@ -1,0 +1,51 @@
+<div class="buscador">
+    <mat-form-field appearance="outline">
+        <mat-label>Precio minimo</mat-label>
+        <input 
+          matInput
+          placeholder="Precio minimo"
+          type="number"
+          [(ngModel)]="precioMinimo">
+        <span matTextPrefix>$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Precio maximo</mat-label>
+        <input 
+          matInput
+          placeholder="Precio maximo"
+          type="number"
+          [(ngModel)]="precioMaximo">
+        <span matTextPrefix>$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Ciudad de origen</mat-label>
+        <input matInput
+               aria-label="State"
+               [matAutocomplete]="autoCiudadOrigen"
+               [formControl]="ciudadOrigenCtrl">
+        <mat-autocomplete #autoCiudadOrigen="matAutocomplete">
+            <mat-option *ngFor="let ciudad of filteredCiudadesOrigen | async" [value]="ciudad.nombre">
+              <span>{{ciudad.nombre}}</span>
+            </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ciudad de destino</mat-label>
+        <input matInput
+               aria-label="State"
+               [matAutocomplete]="autoCiudadDestino"
+               [formControl]="ciudadDestinoCtrl">
+        <mat-autocomplete #autoCiudadDestino="matAutocomplete">
+            <mat-option *ngFor="let ciudad of filteredCiudadesDestino | async" [value]="ciudad.nombre">
+              <span>{{ciudad.nombre}}</span>
+            </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="buscarViajes()">
+        Buscar viajes
+    </button>
+</div>

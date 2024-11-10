@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from '../components/login/login.component';
 import { CrearModificarCiudadesComponent } from '../components/crear-modificar-ciudades/crear-modificar-ciudades.component';
 import { GestionarCiudadesComponent } from '../components/gestionar-ciudades/gestionar-ciudades.component';
+import { BuscadorViajesComponent } from '../components/buscador-viajes/buscador-viajes.component';
 
 
 
@@ -29,7 +30,8 @@ import { GestionarCiudadesComponent } from '../components/gestionar-ciudades/ges
     GestionarCiudadesComponent,
     CrearModificarViajesComponent,
     CrearModificarColectivosComponent,
-    CrearModificarCiudadesComponent
+    CrearModificarCiudadesComponent,
+    BuscadorViajesComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { GestionarCiudadesComponent } from '../components/gestionar-ciudades/ges
     GestionarCiudadesComponent,
     CrearModificarViajesComponent,
     CrearModificarColectivosComponent,
-    CrearModificarCiudadesComponent
+    CrearModificarCiudadesComponent,
+    BuscadorViajesComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

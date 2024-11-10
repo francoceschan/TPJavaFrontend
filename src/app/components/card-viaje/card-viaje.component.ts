@@ -9,4 +9,5 @@ import { Viaje } from 'src/app/model/Viaje';
 export class CardViajeComponent {
 
   @Input() viaje: Viaje;
+  
 }

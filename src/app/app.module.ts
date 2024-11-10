@@ -9,13 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
-import { GestionarCiudadesComponent } from './components/gestionar-ciudades/gestionar-ciudades.component';
-import { CrearModificarCiudadesComponent } from './components/crear-modificar-ciudades/crear-modificar-ciudades.component';
-
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

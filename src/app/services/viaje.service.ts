@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Viaje } from '../model/Viaje';
+import { Ciudad } from '../model/Ciudad';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,9 @@ guardarViaje(viaje: Viaje): Observable<any> {
     descripcion: viaje.descripcion,
     precio: viaje.precio,
     fechaHora: viaje.fechaHora,
-    colectivo: viaje.colectivo
+    colectivo: viaje.colectivo,
+    ciudadOrigen: viaje.ciudadOrigen,
+    ciudadDestino: viaje.ciudadDestino
   })], { type: 'application/json' }));
 
   // Agrega la imagen al `FormData`, si existe
@@ -43,6 +46,26 @@ getAll(): Observable<Viaje[]> {
 getViajesDisponibles(): Observable<Viaje[]> {
   return this.httpClient.get<Viaje[]>(`${environment.serverUrl}/viaje/getViajesDisponibles`);
 }
+
+buscarViajes(precioMinimo?: number, precioMaximo?: number, ciudadOrigen?: Ciudad, ciudadDestino?: Ciudad): Observable<Viaje[]> {
+  let params = new HttpParams();
+
+  if (precioMinimo !== undefined && precioMinimo !== null) {
+    params = params.set('preciominimo', precioMinimo.toString());
+  }
+  if (precioMaximo !== undefined && precioMaximo !== null) {
+    params = params.set('preciomaximo', precioMaximo.toString());
+  }
+  if (ciudadOrigen !== undefined && ciudadOrigen !== null) {
+    params = params.set('ciudadorigenid', ciudadOrigen.idCiudad.toString());
+  }
+  if (ciudadDestino !== undefined && ciudadDestino !== null) {
+    params = params.set('ciudaddestinoid', ciudadDestino.idCiudad.toString());
+  }
+
+  return this.httpClient.get<Viaje[]>(`${environment.serverUrl}/viaje/busqueda`, { params });
+}
+
 
 deleteById(idViaje: number): Observable<void> {
   return this.httpClient.delete<void>(`${environment.serverUrl}/viaje/deleteById/${idViaje}`, { headers: this.reqHeaders });

@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <button 
-    *ngIf="usuarioAutenticado"
+    *ngIf="usuarioAutenticado && roles.length != 0"
     mat-icon-button 
     [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>

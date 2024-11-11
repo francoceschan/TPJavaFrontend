@@ -21,10 +21,8 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this._authService.usuarioAutenticado().subscribe(autenticado =>{
       this.usuarioAutenticado = autenticado
-    })
-
-    this.roles = this._authService.getRolesUsuario();
-
+      this.roles = this._authService.getRolesUsuario();
+    }) 
   }
 
   mostrarItem(rol: string){

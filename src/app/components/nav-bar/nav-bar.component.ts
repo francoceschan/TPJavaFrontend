@@ -29,6 +29,10 @@ export class NavBarComponent implements OnInit {
     return this.roles.toString().includes(rol);
   }
 
+  home(){
+    this.router.navigate(['/home'])
+  }
+
   gestionarViajes(){
       this.router.navigate(['/gestionar-viajes'])
   }

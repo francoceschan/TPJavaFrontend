@@ -14,10 +14,16 @@
         <strong>Ciudad de destino:</strong> {{viaje.ciudadDestino.nombre}}
       </p>
       <p>
+        <strong>Fecha de salida:</strong> {{viaje.fechaHoraInicio | date:'dd/MM/yyyy HH:mm'}}
+      </p>
+      <p>
+        <strong>Fecha de regreso:</strong> {{viaje.fechaHoraFin | date:'dd/MM/yyyy HH:mm'}}
+      </p>
+      <p>
         <strong>Precio:</strong> ${{viaje.precio}}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Reservar</button>
+      <button mat-button (click)="reservar(viaje)">Reservar</button>
     </mat-card-actions>
   </mat-card>

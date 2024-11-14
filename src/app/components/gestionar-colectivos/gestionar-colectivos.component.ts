@@ -36,7 +36,7 @@ export class GestionarColectivosComponent {
         this.buscarColectivos();
       },
       error: (err) => {
-        this.snackBar.open(err.error.message, 'Cerrar', {
+        this.snackBar.open(err.error, 'Cerrar', {
           duration: 3000,
         });
       }

@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
 import { CrearModificarCiudadesComponent } from './components/crear-modificar-ciudades/crear-modificar-ciudades.component';
 import { GestionarCiudadesComponent } from './components/gestionar-ciudades/gestionar-ciudades.component';
+import { ComprarBoletoComponent } from './components/comprar-boleto/comprar-boleto.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,11 @@ const routes: Routes = [
   {
     path:'gestionar-ciudades', 
     component:GestionarCiudadesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'comprar-boleto', 
+    component:ComprarBoletoComponent,
     canActivate: [AuthGuard]
   },
   {path:'home', component:HomeComponent},

@@ -32,8 +32,7 @@ export class AuthGuard {
 
   verificaRol(data: Data): Boolean {
     let rolesUsuario: Rol[] = this._authService.getRolesUsuario();
-    // Condiciones: ¿la pagina exige rol? y ¿el usuario no tiene rol admin?.
-    if (data['roles'] && !rolesUsuario.includes(Rol.ROLE_ADMINISTRATIVO)) {
+    if (data['roles'] && (!rolesUsuario.includes(Rol.ROLE_ADMINISTRATIVO) || !rolesUsuario.includes(Rol.ROLE_PASAJERO))) {
       return rolesUsuario.find(rolUsuario => data['roles'].includes(rolUsuario)) != undefined;
     }
     return true;

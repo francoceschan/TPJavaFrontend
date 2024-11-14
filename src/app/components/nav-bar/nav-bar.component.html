@@ -18,6 +18,10 @@
       mat-menu-item 
       (click)="gestionarCiudades()" 
       *ngIf="mostrarItem('ROLE_ADMINISTRATIVO')" >Gestionar ciudades</button>
+      <button 
+      mat-menu-item 
+      (click)="gestionarCiudades()" 
+      *ngIf="mostrarItem('ROLE_PASAJERO')" >Ver boletos</button>
     </mat-menu>
     <span (click)="home()" id="header">Viajes</span>
     <span class="example-spacer"></span>

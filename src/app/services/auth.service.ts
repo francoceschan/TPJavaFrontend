@@ -62,11 +62,17 @@ export class AuthService {
   
       // Itera sobre los roles y los agrega al arreglo `authorities`
       roles.forEach((role: string) => {
-        authorities.push(Rol[role as keyof typeof Rol]);  // Asegúrate de mapear correctamente los roles
+        authorities.push(Rol[role as keyof typeof Rol]);
       });
     }
   
     return authorities;
+  }
+
+  getUsuario(): string {
+    const token = localStorage.getItem('token') || "";
+    const decodedToken = this.jwtHelper.decodeToken<Token>(token);
+    return decodedToken?.sub || "";
   }
 
 }

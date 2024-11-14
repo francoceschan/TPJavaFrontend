@@ -1,0 +1,74 @@
+<div class="container">
+    <mat-card class="card" *ngIf="!compraRealizada">
+      <mat-card-header class="header">
+        <mat-card-title>Comprar boleto</mat-card-title>
+      </mat-card-header>
+      <div class="card-body">
+        <p id="nombreViaje">
+        {{viaje.nombre}}
+        </p>
+        <p>
+        <strong>Ciudad de origen:</strong> {{viaje.ciudadOrigen.nombre}}
+        </p>
+        <p>
+        <strong>Ciudad de destino:</strong> {{viaje.ciudadDestino.nombre}}
+        </p>
+        <p>
+        <strong>Fecha de salida:</strong> {{viaje.fechaHoraInicio | date:'dd/MM/yyyy HH:mm'}}
+        </p>
+        <p>
+        <strong>Fecha de regreso:</strong> {{viaje.fechaHoraFin | date:'dd/MM/yyyy HH:mm'}}
+        </p>
+        <p>
+        <strong>Precio:</strong> ${{viaje.precio}}
+        </p>
+      </div>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="comprar()">Comprar</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card" *ngIf="compraRealizada">
+      <mat-card-header class="header">
+        <mat-card-title>Comprar realizada con éxito</mat-card-title>
+      </mat-card-header>
+      <div class="card-body">
+        <p class="titulo">
+        {{viaje.nombre}}
+        </p>
+        <p>
+        <strong>Ciudad de origen:</strong> {{boleto.viaje.ciudadOrigen.nombre}}
+        </p>
+        <p>
+        <strong>Ciudad de destino:</strong> {{boleto.viaje.ciudadDestino.nombre}}
+        </p>
+        <p>
+        <strong>Fecha de salida:</strong> {{boleto.viaje.fechaHoraInicio | date:'dd/MM/yyyy HH:mm'}}
+        </p>
+        <p>
+        <strong>Fecha de regreso:</strong> {{boleto.viaje.fechaHoraFin | date:'dd/MM/yyyy HH:mm'}}
+        </p>
+        <p>
+        <strong>Precio:</strong> ${{boleto.viaje.precio}}
+        </p>
+
+        <p class="titulo">
+          Pasajero
+        </p>
+        <p>
+          <strong>Butaca Nro:</strong> {{boleto.butaca}}
+        </p>
+        <p>
+          <strong>Nombre:</strong> {{boleto.pasajero.nombre}}
+        </p>
+        <p>
+          <strong>Apellido:</strong> {{boleto.pasajero.apellido}}
+        </p>
+        <p>
+          <strong>DNI:</strong> {{boleto.pasajero.nroDocumento}}
+        </p>
+      </div>
+
+    </mat-card>
+  </div>
+  

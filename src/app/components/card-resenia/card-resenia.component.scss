@@ -1,0 +1,20 @@
+.carousel-card {
+    min-width: 300px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+    padding: 16px;
+}
+
+mat-card-content {
+    padding: 0px;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    color: #FFD700;
+}
+
+mat-icon {
+    font-size: 18px;
+}

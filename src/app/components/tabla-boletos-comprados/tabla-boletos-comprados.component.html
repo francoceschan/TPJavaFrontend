@@ -1,0 +1,46 @@
+<div class="container">
+
+    <mat-card class="card">
+        <mat-card-header class="header">
+          <mat-card-title>Boletos comprados</mat-card-title>
+          <mat-card-subtitle>Desde aquí podrá visualizar los boletos comprados y dejar reseñas de sus viajes</mat-card-subtitle>
+        </mat-card-header>
+        <table 
+        mat-table 
+        [dataSource]="boletos" 
+        class="mat-elevation-z8" 
+        *ngIf="boletos.length>0">
+
+            <ng-container matColumnDef="nombreViaje">
+              <th mat-header-cell *matHeaderCellDef> Viaje </th>
+              <td mat-cell *matCellDef="let element"> {{element.viaje.nombre}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="fechaInicio">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.viaje.fechaHoraInicio}} </td>
+              </ng-container>
+          
+            <ng-container matColumnDef="resenia">
+                <th mat-header-cell *matHeaderCellDef> Reseña </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <button 
+                    mat-icon-button
+                    (click)="cargarResenia(element)"
+                    >
+                        <mat-icon>edit</mat-icon>
+                    </button> 
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        </table>
+
+        <p *ngIf="boletos.length == 0">No hay boletos comprados</p>
+
+    </mat-card>
+
+    
+</div>

@@ -1,4 +1,5 @@
 <div id="viajes">
     <app-buscador-viajes class="buscador" (buscarViajesPorFiltros)="buscarViajesPorFiltros($event)"></app-buscador-viajes>
     <app-card-viaje *ngFor="let viaje of viajes" [viaje]="viaje"></app-card-viaje>
+    <app-carousel-resenias></app-carousel-resenias>
 </div>

@@ -1,0 +1,13 @@
+<div class="carousel-container">
+    <button mat-icon-button (click)="prevSlide()" aria-label="Previous slide">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <div class="carousel">
+        <app-card-resenia *ngFor="let resenia of resenias" [resenia]="resenia"></app-card-resenia>
+    </div>
+
+    <button mat-icon-button (click)="nextSlide()" aria-label="Next slide">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>

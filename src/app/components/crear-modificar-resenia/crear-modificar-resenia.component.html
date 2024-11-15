@@ -1,0 +1,33 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-header class="header">
+            <mat-card-title>Agregar reseña a {{boleto.viaje.nombre}}</mat-card-title>
+        </mat-card-header>
+        <div class="card-body" *ngIf="this.resenia != null">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Reseña</mat-label>
+                <textarea 
+                matInput
+                [(ngModel)]="resenia.descripcion"
+                placeholder="Ingresar reseña"></textarea>
+            </mat-form-field>
+
+            <div class="container-puntaje">
+                <p>Puntuar viaje</p>
+                <span *ngFor="let star of [].constructor(stars); let i = index"
+                (click)="setRating(i + 1)"
+                (mouseenter)="setHover(i + 1)"
+                (mouseleave)="resetHover()">
+                    <mat-icon [ngClass]="i < (hoveredStar || resenia.puntaje) ? 'filled' : 'empty'">
+                    {{ i < (hoveredStar || resenia.puntaje) ? 'star' : 'star_border' }}
+                    </mat-icon>
+                </span>
+            </div>
+        </div>
+        <mat-card-actions align="end">
+            <button mat-button (click)="guardar()">Guardar</button>
+          </mat-card-actions>
+    </mat-card>
+</div>
+

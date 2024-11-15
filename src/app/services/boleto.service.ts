@@ -19,4 +19,8 @@ export class BoletoService {
   comprarBoleto(boletoDTO: BoletoDTO):Observable<Boleto>{
     return this.httpClient.post<Boleto>(`${environment.serverUrl}/boleto/comprarBoleto`,boletoDTO, { headers: this.reqHeaders })
   }
+
+  findBoletosByMail(mail: string): Observable<Boleto[]>{
+    return this.httpClient.get<Boleto[]>(`${environment.serverUrl}/boleto/findBoletosByMail/${mail}`, { headers: this.reqHeaders })
+  }
 }

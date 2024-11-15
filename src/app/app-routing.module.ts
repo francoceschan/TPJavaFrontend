@@ -10,6 +10,8 @@ import { AuthGuard } from './guard/auth.guard';
 import { CrearModificarCiudadesComponent } from './components/crear-modificar-ciudades/crear-modificar-ciudades.component';
 import { GestionarCiudadesComponent } from './components/gestionar-ciudades/gestionar-ciudades.component';
 import { ComprarBoletoComponent } from './components/comprar-boleto/comprar-boleto.component';
+import { TablaBoletosCompradosComponent } from './components/tabla-boletos-comprados/tabla-boletos-comprados.component';
+import { CrearModificarReseniaComponent } from './components/crear-modificar-resenia/crear-modificar-resenia.component';
 
 const routes: Routes = [
   {
@@ -23,17 +25,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:'gestionar-viajes/crear-modificar-viaje/:id', 
-    component:CrearModificarViajesComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path:'gestionar-colectivos/crear-modificar-colectivo', 
     component:CrearModificarColectivosComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path:'gestionar-viajes/crear-modificar-colectivo/:id', component:CrearModificarColectivosComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -47,10 +40,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:'gestionar-ciudades/crear-modificar-ciudad/:id', component:CrearModificarCiudadesComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path:'gestionar-ciudades', 
     component:GestionarCiudadesComponent,
     canActivate: [AuthGuard]
@@ -58,6 +47,16 @@ const routes: Routes = [
   {
     path:'comprar-boleto', 
     component:ComprarBoletoComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'boletos-comprados', 
+    component:TablaBoletosCompradosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'boletos-comprados/crear-modificar-resenia', 
+    component:CrearModificarReseniaComponent,
     canActivate: [AuthGuard]
   },
   {path:'home', component:HomeComponent},

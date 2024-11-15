@@ -1,0 +1,11 @@
+<mat-card class="carousel-card">
+    <mat-card-title>{{ resenia.viaje.nombre }}</mat-card-title>
+    <mat-card-content>
+        <div class="star-rating">
+            <mat-icon *ngFor="let star of starsArray; let i = index">
+                {{ i < rating ? 'star' : 'star_border' }}
+            </mat-icon>
+        </div>
+        <p>{{resenia.descripcion}}</p>
+    </mat-card-content>
+</mat-card>

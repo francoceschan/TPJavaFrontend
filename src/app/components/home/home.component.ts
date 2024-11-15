@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Viaje } from 'src/app/model/Viaje';
 import { ViajeService } from 'src/app/services/viaje.service';
+import { ReseniaPublicaDTO } from '../../model/DTO/ReseniaPublicaDTO';
+import { ReseniaService } from 'src/app/services/resenia.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
   viajes: Viaje[];
 
   constructor(
-    private _viajeService: ViajeService
+    private _viajeService: ViajeService,
   ) {}
 
   ngOnInit(): void {

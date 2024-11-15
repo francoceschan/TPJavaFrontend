@@ -1,0 +1,17 @@
+.carousel-container {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    padding: 16px;
+}
+
+button {
+    background: #f0f0f0;
+    border-radius: 50%;
+}

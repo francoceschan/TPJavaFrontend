@@ -15,6 +15,10 @@ import { CrearModificarCiudadesComponent } from '../components/crear-modificar-c
 import { GestionarCiudadesComponent } from '../components/gestionar-ciudades/gestionar-ciudades.component';
 import { BuscadorViajesComponent } from '../components/buscador-viajes/buscador-viajes.component';
 import { ComprarBoletoComponent } from '../components/comprar-boleto/comprar-boleto.component';
+import { TablaBoletosCompradosComponent } from '../components/tabla-boletos-comprados/tabla-boletos-comprados.component';
+import { CrearModificarReseniaComponent } from '../components/crear-modificar-resenia/crear-modificar-resenia.component';
+import { CardReseniaComponent } from '../components/card-resenia/card-resenia.component';
+import { CarouselReseniasComponent } from '../components/carousel-resenias/carousel-resenias.component';
 
 
 
@@ -33,7 +37,11 @@ import { ComprarBoletoComponent } from '../components/comprar-boleto/comprar-bol
     CrearModificarColectivosComponent,
     CrearModificarCiudadesComponent,
     BuscadorViajesComponent,
-    ComprarBoletoComponent
+    ComprarBoletoComponent,
+    TablaBoletosCompradosComponent,
+    CrearModificarReseniaComponent,
+    CardReseniaComponent,
+    CarouselReseniasComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +62,11 @@ import { ComprarBoletoComponent } from '../components/comprar-boleto/comprar-bol
     CrearModificarColectivosComponent,
     CrearModificarCiudadesComponent,
     BuscadorViajesComponent,
-    ComprarBoletoComponent
+    ComprarBoletoComponent,
+    TablaBoletosCompradosComponent,
+    CrearModificarReseniaComponent,
+    CardReseniaComponent,
+    CarouselReseniasComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

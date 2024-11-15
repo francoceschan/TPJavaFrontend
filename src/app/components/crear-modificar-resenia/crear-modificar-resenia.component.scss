@@ -1,0 +1,32 @@
+.container {
+    padding: 64px;
+}
+
+.card{
+    padding: 8px;
+}
+
+.header {
+    margin-bottom: 8px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+}
+
+mat-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: gold;
+  }
+  
+  .filled {
+    color: gold;
+  }
+  
+  .empty {
+    color: lightgray;
+  }
+  

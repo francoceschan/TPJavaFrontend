@@ -1,7 +1,10 @@
 <div id="viajes">
     <app-buscador-viajes class="buscador" (buscarViajesPorFiltros)="buscarViajesPorFiltros($event)"></app-buscador-viajes>
-    <div class="container-viajes">
+    <div class="container-viajes" *ngIf="viajes.length != 0">
         <app-card-viaje *ngFor="let viaje of viajes" [viaje]="viaje"></app-card-viaje>
+    </div>
+    <div class="container-viajes" *ngIf="viajes.length == 0">
+        <p>No hay viajes disponibles</p>
     </div>
     <app-carousel-resenias></app-carousel-resenias>
 </div>

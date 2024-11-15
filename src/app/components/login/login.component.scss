@@ -1,9 +1,12 @@
 .container {
+    display: flex;
+    justify-content: center;
     padding: 64px;
 }
 
 .card {
     padding: 8px;
+    min-width: 400px;
 }
 
 .header {

@@ -42,8 +42,12 @@ export class NavBarComponent implements OnInit {
   }
 
   gestionarCiudades(){
+    this.router.navigate(['/gestionar-ciudades'])
+  }
+
+  boletosComprados(){
     this.router.navigate(['/boletos-comprados'])
-}
+  }
 
   login(){
     this.router.navigate(['/login'])

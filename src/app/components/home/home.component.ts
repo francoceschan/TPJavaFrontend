@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Viaje } from 'src/app/model/Viaje';
 import { ViajeService } from 'src/app/services/viaje.service';
-import { ReseniaPublicaDTO } from '../../model/DTO/ReseniaPublicaDTO';
-import { ReseniaService } from 'src/app/services/resenia.service';
 
 @Component({
   selector: 'app-home',

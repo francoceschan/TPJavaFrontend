@@ -22,6 +22,8 @@ export class BuscadorViajesComponent {
   filteredCiudadesDestino: Observable<Ciudad[]>;
   precioMinimo: number;
   precioMaximo: number;
+  fechaInicioCtrl = new FormControl<Date | null>(null);
+  fechaFinCtrl = new FormControl<Date | null>(null);
 
   constructor(
     private _ciudadService: CiudadService,
@@ -57,8 +59,11 @@ export class BuscadorViajesComponent {
 
     const ciudadOrigen = this.ciudades.find(ciudad => ciudad.nombre === this.ciudadOrigenCtrl.value);
     const ciudadDestino = this.ciudades.find(ciudad => ciudad.nombre === this.ciudadDestinoCtrl.value);
+    const fechaInicio = this.fechaInicioCtrl.value;
+    const fechaFin = this.fechaFinCtrl.value;
+
    
-    this._viajeService.buscarViajes(this.precioMinimo,this.precioMaximo, ciudadOrigen, ciudadDestino).subscribe(viajes => this.buscarViajesPorFiltros.emit(viajes))
+    this._viajeService.buscarViajes(this.precioMinimo,this.precioMaximo, ciudadOrigen, ciudadDestino, fechaInicio, fechaFin).subscribe(viajes => this.buscarViajesPorFiltros.emit(viajes))
   }
 
 }

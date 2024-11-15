@@ -45,10 +45,11 @@ getAll(): Observable<Viaje[]> {
 }
 
 getViajesDisponibles(): Observable<Viaje[]> {
-  return this.httpClient.get<Viaje[]>(`${environment.serverUrl}/viaje/getViajesDisponibles`);
+  return this.httpClient.get<Viaje[]>
+  (`${environment.serverUrl}/viaje/getViajesDisponibles`);
 }
 
-buscarViajes(precioMinimo?: number, precioMaximo?: number, ciudadOrigen?: Ciudad, ciudadDestino?: Ciudad): Observable<Viaje[]> {
+buscarViajes(precioMinimo?: number, precioMaximo?: number, ciudadOrigen?: Ciudad, ciudadDestino?: Ciudad, fechaInicio?: Date | null, fechaFin?: Date | null): Observable<Viaje[]> {
   let params = new HttpParams();
 
   if (precioMinimo !== undefined && precioMinimo !== null) {
@@ -62,6 +63,12 @@ buscarViajes(precioMinimo?: number, precioMaximo?: number, ciudadOrigen?: Ciudad
   }
   if (ciudadDestino !== undefined && ciudadDestino !== null) {
     params = params.set('ciudaddestinoid', ciudadDestino.idCiudad.toString());
+  }
+  if (fechaInicio !== undefined && fechaInicio !== null) {
+    params = params.set('fechainicio', fechaInicio.toISOString());
+  }
+  if (fechaFin !== undefined && fechaFin !== null) {
+    params = params.set('fechafin', fechaFin.toISOString());
   }
 
   return this.httpClient.get<Viaje[]>(`${environment.serverUrl}/viaje/busqueda`, { params });

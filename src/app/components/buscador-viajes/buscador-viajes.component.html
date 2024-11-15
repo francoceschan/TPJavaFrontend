@@ -19,7 +19,7 @@
         <span matTextPrefix>$&nbsp;</span>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Ciudad de origen</mat-label>
         <input matInput
                aria-label="State"
@@ -32,7 +32,7 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Ciudad de destino</mat-label>
         <input matInput
                aria-label="State"
@@ -43,6 +43,20 @@
               <span>{{ciudad.nombre}}</span>
             </mat-option>
         </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput [matDatepicker]="startPicker" placeholder="Seleccione fecha de inicio" [formControl]="fechaInicioCtrl">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de fin</mat-label>
+        <input matInput [matDatepicker]="endPicker" placeholder="Seleccione fecha de fin" [formControl]="fechaFinCtrl">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
       </mat-form-field>
 
     <button mat-raised-button color="primary" (click)="buscarViajes()">

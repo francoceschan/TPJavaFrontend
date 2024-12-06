@@ -17,47 +17,56 @@ const routes: Routes = [
   {
     path:'gestionar-viajes', 
     component:GestionarViajesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMINISTRATIVO'] }
   },
   {
     path:'gestionar-viajes/crear-modificar-viaje', 
     component:CrearModificarViajesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMINISTRATIVO'] }
   },
   {
     path:'gestionar-colectivos/crear-modificar-colectivo', 
     component:CrearModificarColectivosComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMINISTRATIVO'] }
   },
   {
     path:'gestionar-colectivos', 
     component:GestionarColectivosComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMINISTRATIVO'] }
   },
   {
     path:'gestionar-ciudades/crear-modificar-ciudad', 
     component:CrearModificarCiudadesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMINISTRATIVO'] }
   },
   {
     path:'gestionar-ciudades', 
     component:GestionarCiudadesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMINISTRATIVO'] }
   },
   {
     path:'comprar-boleto', 
     component:ComprarBoletoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_PASAJERO'] }
   },
   {
     path:'boletos-comprados', 
     component:TablaBoletosCompradosComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_PASAJERO'] }
   },
   {
     path:'boletos-comprados/crear-modificar-resenia', 
     component:CrearModificarReseniaComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_PASAJERO'] }
   },
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},

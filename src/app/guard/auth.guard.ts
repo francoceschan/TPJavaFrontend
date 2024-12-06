@@ -30,11 +30,11 @@ export class AuthGuard {
     }
   }
 
-  verificaRol(data: Data): Boolean {
-    let rolesUsuario: Rol[] = this._authService.getRolesUsuario();
-    if (data['roles'] && (!rolesUsuario.includes(Rol.ROLE_ADMINISTRATIVO) || !rolesUsuario.includes(Rol.ROLE_PASAJERO))) {
-      return rolesUsuario.find(rolUsuario => data['roles'].includes(rolUsuario)) != undefined;
+  verificaRol(data: Data): boolean {
+    const rolesUsuario: Rol[] = this._authService.getRolesUsuario();
+    if (data['roles']) {
+      return data['roles'].some((rolRequerido: Rol) => rolesUsuario.includes(rolRequerido));
     }
-    return true;
-  }
+    return true; // Si no hay roles definidos en data, permite el acceso
+  }  
 }
